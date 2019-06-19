@@ -1,7 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import Error from './Error'
 
-function EditProduct() {
+function EditProduct({ product }) {
+  const { saurceName, saucerPrice } = product
+
+  // Generar los refs
+  const saucerPriceRef = useRef('')
+  const saurceNameRef = useRef('')
+
   // States
   const [error, setError] = useState(false)
   const [category, setCategory] = useState('')
@@ -24,6 +30,8 @@ function EditProduct() {
             className="form-control"
             name="name"
             placeholder="Nombre Platillo"
+            ref={saurceNameRef}
+            defaultValue={saurceName}
           />
         </div>
 
@@ -34,6 +42,8 @@ function EditProduct() {
             className="form-control"
             name="price"
             placeholder="Precio Platillo"
+            ref={saucerPriceRef}
+            defaultValue={saucerPrice}
           />
         </div>
 
@@ -46,6 +56,7 @@ function EditProduct() {
               name="category"
               value="postre"
               onChange={readRadioValue}
+              defaultChecked={product.category === 'postre'}
             />
             <label className="form-check-label">Postre</label>
           </div>
@@ -56,6 +67,7 @@ function EditProduct() {
               name="category"
               value="bebida"
               onChange={readRadioValue}
+              defaultChecked={product.category === 'bebida'}
             />
             <label className="form-check-label">Bebida</label>
           </div>
@@ -67,6 +79,7 @@ function EditProduct() {
               name="category"
               value="cortes"
               onChange={readRadioValue}
+              defaultChecked={product.category === 'cortes'}
             />
             <label className="form-check-label">Cortes</label>
           </div>
@@ -78,6 +91,7 @@ function EditProduct() {
               name="category"
               value="ensalada"
               onChange={readRadioValue}
+              defaultChecked={product.category === 'ensalada'}
             />
             <label className="form-check-label">Ensalada</label>
           </div>
