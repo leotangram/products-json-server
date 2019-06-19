@@ -41,7 +41,21 @@ function App() {
             render={() => <AddProduct setReloadProducts={setReloadProducts} />}
           />
           <Route exact path="/products/:id" component={Product} />
-          <Route exact path="/products/edit/:id" component={EditProduct} />
+          <Route
+            exact
+            path="/products/edit/:id"
+            render={props => {
+              // Tomar el ID del producto
+              const idProduct = parseInt(props.match.params.id)
+
+              // El producto que se pasa al state
+              const product = products.filter(
+                product => product.id === idProduct
+              )
+
+              return <EditProduct product={product[0]} />
+            }}
+          />
         </Switch>
       </main>
       <p className="mt-4 p2 text-center">Todos los derechos reservados</p>
