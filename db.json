@@ -1,12 +1,6 @@
 {
   "restaurant": [
     {
-      "saucerPrice": "250",
-      "saurceName": "Cheesecake",
-      "category": "postre",
-      "id": 1
-    },
-    {
       "saucerPrice": "300",
       "saurceName": "Rib Eye 300g",
       "category": "cortes",
@@ -19,22 +13,10 @@
       "id": 3
     },
     {
-      "saurceName": "Agua de frutas",
-      "saucerPrice": "80",
-      "category": "bebida",
-      "id": 4
-    },
-    {
       "saurceName": "Pastel de zanahoria",
       "saucerPrice": "80",
       "category": "postre",
       "id": 5
-    },
-    {
-      "saucerPrice": "100",
-      "saurceName": "Ensalada de pollo y verduras",
-      "category": "ensalada",
-      "id": 6
     }
   ]
 }

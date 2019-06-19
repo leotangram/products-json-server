@@ -33,7 +33,12 @@ function App() {
           <Route
             exact
             path="/products"
-            render={() => <Products products={products} />}
+            render={() => (
+              <Products
+                products={products}
+                setReloadProducts={setReloadProducts}
+              />
+            )}
           />
           <Route
             exact
