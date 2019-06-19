@@ -1,7 +1,13 @@
 import React, { useState, useRef } from 'react'
 import Error from './Error'
+import Swal from 'sweetalert2'
+import axios from 'axios'
+import { withRouter } from 'react-router-dom'
 
-function EditProduct({ product }) {
+function EditProduct(props) {
+  // Destructuring de props
+  const { history, product, setReloadProducts } = props
+
   const { saurceName, saucerPrice } = product
 
   // Generar los refs
@@ -16,7 +22,7 @@ function EditProduct({ product }) {
     setCategory(e.target.value)
   }
 
-  const editProduct = e => {
+  const editProduct = async e => {
     e.preventDefault()
 
     // Revisar si cambió la categoría, de lo contrario asignar el mismo valor
@@ -28,7 +34,30 @@ function EditProduct({ product }) {
       saurceName: saurceNameRef.current.value,
       category: categorySaurce
     }
-    console.log(editSaucer)
+    // Enviar el request
+    const url = `http://localhost:4000/restaurant/${product.id}`
+
+    try {
+      const result = await axios.put(url, editSaucer)
+      console.log(result)
+      if (result.status === 200) {
+        Swal.fire(
+          'Producto editado',
+          'El producto se editó correctamente',
+          'success'
+        )
+      }
+    } catch (error) {
+      console.log(error)
+      Swal.fire({
+        type: 'error',
+        title: '',
+        text: 'Hubo un error, vuelve a intentarlo'
+      })
+    }
+    // Redirigir al usuario, consultar api
+    setReloadProducts(true)
+    history.push('/products')
   }
 
   return (
@@ -120,4 +149,4 @@ function EditProduct({ product }) {
   )
 }
 
-export default EditProduct
+export default withRouter(EditProduct)

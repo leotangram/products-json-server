@@ -53,7 +53,12 @@ function App() {
                 product => product.id === idProduct
               )
 
-              return <EditProduct product={product[0]} />
+              return (
+                <EditProduct
+                  product={product[0]}
+                  setReloadProducts={setReloadProducts}
+                />
+              )
             }}
           />
         </Switch>
