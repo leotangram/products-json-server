@@ -24,14 +24,26 @@ function EditProduct(props) {
 
   const editProduct = async e => {
     e.preventDefault()
+    console.log('HOla');
+    
+
+    // Validación
+    const newSaucerName = saurceNameRef.current.value,
+      newSaucerPrice = saucerPriceRef.current.value
+
+    if (newSaucerName === '' || newSaucerPrice === '') {
+      setError(true)
+      return
+    }
+    setError(false)
 
     // Revisar si cambió la categoría, de lo contrario asignar el mismo valor
     let categorySaurce = category === '' ? product.category : category
 
     // Obtener los valores del formulario
     const editSaucer = {
-      saucerPrice: saucerPriceRef.current.value,
-      saurceName: saurceNameRef.current.value,
+      saucerPrice: newSaucerPrice,
+      saurceName: newSaucerName,
       category: categorySaurce
     }
     // Enviar el request
