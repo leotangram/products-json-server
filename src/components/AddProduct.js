@@ -4,7 +4,7 @@ import axios from 'axios'
 import Swal from 'sweetalert2'
 import { withRouter } from 'react-router-dom'
 
-function AddProduct({ history }) {
+function AddProduct({ history, setReloadProducts }) {
   // States
   const [saurceName, setSaurceName] = useState('')
   const [saucerPrice, setSaucerPrice] = useState('')
@@ -48,6 +48,7 @@ function AddProduct({ history }) {
     }
 
     // Regirigir al usuario a productos
+    setReloadProducts(true)
     history.push('/products')
   }
 

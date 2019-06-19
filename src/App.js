@@ -9,15 +9,21 @@ import axios from 'axios'
 
 function App() {
   const [products, setProducts] = useState([])
+  const [reloadProducts, setReloadProducts] = useState(true)
 
   useEffect(() => {
-    const consultApi = async () => {
-      // Consultar la api de json-server
-      const result = await axios.get('http://localhost:4000/restaurant')
-      setProducts(result.data)
+    if (reloadProducts) {
+      const consultApi = async () => {
+        // Consultar la api de json-server
+        const result = await axios.get('http://localhost:4000/restaurant')
+        setProducts(result.data)
+      }
+      consultApi()
     }
-    consultApi()
-  }, [])
+
+    // Cambiar a false la recarga de los productos
+    setReloadProducts(false)
+  }, [reloadProducts])
 
   return (
     <Router>
@@ -29,7 +35,11 @@ function App() {
             path="/products"
             render={() => <Products products={products} />}
           />
-          <Route exact path="/new-product" component={AddProduct} />
+          <Route
+            exact
+            path="/new-product"
+            render={() => <AddProduct setReloadProducts={setReloadProducts} />}
+          />
           <Route exact path="/products/:id" component={Product} />
           <Route exact path="/products/edit/:id" component={EditProduct} />
         </Switch>
