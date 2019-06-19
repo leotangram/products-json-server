@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import Error from './Error'
+import axios from 'axios'
 
 function AddProduct() {
   // States
   const [saurceName, setSaurceName] = useState('')
-  const [saurcePrice, setSaurcePrice] = useState('')
+  const [saucerPrice, setSaucerPrice] = useState('')
   const [category, setCategory] = useState('')
   const [error, setError] = useState(false)
 
@@ -12,15 +13,25 @@ function AddProduct() {
     setCategory(e.target.value)
   }
 
-  const addProduct = e => {
+  const addProduct = async e => {
     e.preventDefault()
-    if (saurceName === '' || saurcePrice === '' || category === '') {
+    if (saurceName === '' || saucerPrice === '' || category === '') {
       setError(true)
       return
     }
     setError(false)
 
     // Crear el nuevo producto
+    try {
+      const result = await axios.post(`http://localhost:4000/restaurant`, {
+        saurceName,
+        saucerPrice,
+        category
+      })
+      console.log(result)
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
@@ -46,7 +57,7 @@ function AddProduct() {
             className="form-control"
             name="price"
             placeholder="Precio Platillo"
-            onChange={e => setSaurcePrice(e.target.value)}
+            onChange={e => setSaucerPrice(e.target.value)}
           />
         </div>
 

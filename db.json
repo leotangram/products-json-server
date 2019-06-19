@@ -11,6 +11,12 @@
       "saurceName": "Rib Eye 400g",
       "category": "cortes",
       "id": 2
+    },
+    {
+      "saurceName": "Ensalada primavera",
+      "saucerPrice": "100",
+      "category": "ensalada",
+      "id": 3
     }
   ]
 }
