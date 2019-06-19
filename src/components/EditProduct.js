@@ -16,7 +16,20 @@ function EditProduct({ product }) {
     setCategory(e.target.value)
   }
 
-  const editProduct = e => {}
+  const editProduct = e => {
+    e.preventDefault()
+
+    // Revisar si cambió la categoría, de lo contrario asignar el mismo valor
+    let categorySaurce = category === '' ? product.category : category
+
+    // Obtener los valores del formulario
+    const editSaucer = {
+      saucerPrice: saucerPriceRef.current.value,
+      saurceName: saurceNameRef.current.value,
+      category: categorySaurce
+    }
+    console.log(editSaucer)
+  }
 
   return (
     <div className="col-md-8 mx-auto ">
