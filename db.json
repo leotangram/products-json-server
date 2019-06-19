@@ -1,0 +1,22 @@
+{
+  "restaurant": [
+    {
+      "saucerPrice": "300",
+      "saurceName": "Rib Eye 300g",
+      "category": "cortes",
+      "id": 2
+    },
+    {
+      "saurceName": "Ensalada primavera",
+      "saucerPrice": "100",
+      "category": "ensalada",
+      "id": 3
+    },
+    {
+      "saurceName": "Pastel de zanahoria",
+      "saucerPrice": "80",
+      "category": "postre",
+      "id": 5
+    }
+  ]
+}
