@@ -17,6 +17,18 @@
       "saucerPrice": "100",
       "category": "ensalada",
       "id": 3
+    },
+    {
+      "saurceName": "Agua de frutas",
+      "saucerPrice": "80",
+      "category": "bebida",
+      "id": 4
+    },
+    {
+      "saurceName": "Pastel de zanahoria",
+      "saucerPrice": "80",
+      "category": "postre",
+      "id": 5
     }
   ]
 }
